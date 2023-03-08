@@ -1,38 +1,86 @@
 module.exports = {
+  root: true,
   env: {
-    browser: true,
-    es2021: true,
-    node: true,
+    node: true
   },
   extends: [
-    'airbnb-base',
-    'plugin:vue/vue3-recommended',
-    'plugin:tailwindcss/recommended',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'plugin:vue/vue3-essential',
+    '@vue/eslint-config-typescript/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'plugin:promise/recommended'
   ],
-  parserOptions: {
-    ecmaVersion: 2021,
-  },
-  plugins: ['vue', 'tailwindcss'],
-  rules: {
-    'import/extensions': 'off',
-    'import/no-extraneous-dependencies': [0, { 'packageDir ': './src/' }],
-    'max-len': ['error', {
-      code: 160,
-      ignorePattern: 'class="([\\s\\S]*?)"|d="([\\s\\S]*?)"', // ignore classes or svg draw attributes
-      ignoreUrls: true,
-    }],
-    'vue/multi-word-component-names': 'off',
-  },
+  plugins: ['unused-imports', 'promise'],
   settings: {
     'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', 'svg'],
-        moduleDirectory: ['node_modules', 'src/'],
-      },
       alias: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', 'svg'],
-        map: [['@', './src']],
-      },
-    },
+        map: [['@', './src/']],
+        extensions: ['.ts', '.js', '.vue']
+      }
+    }
   },
-};
+  parserOptions: {
+    ecmaVersion: 2020
+  },
+  rules: {
+    'require-await': 'error',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        semi: false,
+        singleQuote: true,
+        printWidth: 120,
+        trailingComma: 'none',
+        arrowParens: 'avoid'
+      }
+    ],
+    'unused-imports/no-unused-imports': 'error',
+    'import/first': 'error',
+    'import/order': [
+      'error',
+      {
+        alphabetize: { order: 'asc', caseInsensitive: true },
+        'newlines-between': 'always',
+        pathGroups: [
+          {
+            pattern: '@/**',
+            group: 'external',
+            position: 'after'
+          }
+        ]
+      }
+    ],
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          // no relative imports allowed, always use alias, it makes easier to move files later if necessary
+          './**',
+          '../**'
+        ]
+      }
+    ],
+    '@typescript-eslint/no-unused-vars': 'error'
+  },
+  overrides: [
+    {
+      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
+      env: {
+        jest: true
+      }
+    },
+    {
+      files: ['tests/**/*.ts'],
+      rules: {
+        'no-restricted-imports': 'off'
+      }
+    }
+  ]
+}

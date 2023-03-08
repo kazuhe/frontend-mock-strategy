@@ -1,51 +1,15 @@
-<p align='center'>
-  <img src='https://repository-images.githubusercontent.com/442005408/3f8d7fed-9d3f-45c8-bcd5-0fa64e9ac535' alt='Vue.js starter template' width='600'/>
-</p>
+# Vite + Vue 3 + Typescript + Vue Router + Pinia + Eslint + Jest + Cypress
 
-# Vue.js starter template
+A [Vite](https://vitejs.dev/) scaffolded project with Vue 3 + Typescript template extended with some useful tools which are included in a VUE CLI project
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/lecoueyl/vue3-template)
+- [Vue Router](https://router.vuejs.org/)
+- [Pinia](https://pinia.vite.net/) for easier and type safe state handling
+- [Eslint](https://eslint.org/) with some additional plugins and rules for high code quality
+- [Jest](https://jestjs.io/) for unit testing with [Vue Testing Library](https://testing-library.com/docs/vue-testing-library/intro)
+- [Cypress](https://www.cypress.io/) for E2E testing
 
-Features:
+## For better code quality
 
-- 🛠 [Vue 3](https://v3.vuejs.org/guide/introduction.html)
-- ⚡️ [Vite](https://vitejs.dev/guide/)
-- 🗂 [PNPM](https://pnpm.io)
-- 🛣 [Vue Router](https://github.com/vuejs/vue-router-next)
-- 🎨 [Tailwind CSS](https://tailwindcss.com/docs/)
-- 🔍 [Eslint with airbnb and stylelint](https://github.com/airbnb/javascript)
-- 🌗 [Light and dark mode composable](https://github.com/lecoueyl/vue3-template/blob/main/src/composables/theme.js)
-- 🔡 [Inter var font](https://rsms.me/inter/)
-- 📄 [Github pages action](https://pages.github.com)
-
-## Getting Started
-
-Scaffold this repository
-
-```sh
-pnpx degit lecoueyl/vue3-template my-project
-cd my-project
-```
-
-Install and start dev server
-
-```sh
-pnpm install
-pnpm run dev
-```
-
-## Deployment
-
-### Netlify
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/lecoueyl/vue3-template)
-
-### Github pages
-
-The default github action will build to `gh-page` when pushing on `main` branch.
-
-For a project page, the base path of the repository must be specified. Add the following secret in the Github repository Settings > Secrets > Actions
-
-| Name                        | Value                    |
-| --------------------------- | ------------------------ |
-| VITE_BASE_PUBLIC_PATH       | `/repository-name/`      |
+The following areas got some improvements (besides using the recommended ESLint rules):
+- Module imports (restricted paths, group organization, alphabetical order, removal of unused modules)
+- Promise and async/await (enforcing `catch` statements, enforcing param names and order in promise executor, enforcing using `await` in `async` functions)
