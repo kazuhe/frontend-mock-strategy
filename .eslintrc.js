@@ -57,16 +57,6 @@ module.exports = {
         ]
       }
     ],
-    'no-restricted-imports': [
-      'error',
-      {
-        patterns: [
-          // no relative imports allowed, always use alias, it makes easier to move files later if necessary
-          './**',
-          '../**'
-        ]
-      }
-    ],
     '@typescript-eslint/no-unused-vars': 'error'
   },
   overrides: [
