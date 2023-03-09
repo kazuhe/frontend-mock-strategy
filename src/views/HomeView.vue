@@ -14,7 +14,7 @@ const fetchBookList = async () => {
 
 <template>
   <div class="container">
-    <button type="button" @click="fetchBookList">書籍一覧を取得する</button>
+    <button type="button" @click="fetchBookList" data-testid="fetch-book-list-button">書籍一覧を取得する</button>
     <ul>
       <li v-for="book in bookList" :key="book.isbn">isbn: {{ book.isbn }}, name: {{ book.name }}</li>
     </ul>
