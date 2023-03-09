@@ -1,4 +1,4 @@
-import type { ResponseResolver } from '@/mocks/api/types'
+import type { ResponseResolver } from '@/mocks/types'
 
 import { response } from './response'
 
